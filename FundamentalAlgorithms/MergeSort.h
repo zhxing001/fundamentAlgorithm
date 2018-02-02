@@ -34,17 +34,35 @@ template<class T>
 void MergePass(T *initlist, T *result, int n, int s)   //n是数据个数，s是每段个数
 {
 	int i;
-	for (i = 1; i <=n-2*s+1; i += 2 * s)    //这里一定是n-2*s+1，每两个一对，不成对的话就不能遍历了。
+	for (i = 1; i <= n - 2 * s + 1; i += 2 * s)    //这里一定是n-2*s+1，每两个一对，不成对的话就不能遍历了。
 	{
-		Merge(initlist, result, i, i + s - 1,i+2*s-1);
+		Merge(initlist, result, i, i + s - 1, i + 2 * s - 1);
 	}
-	if ((i + s - 1) < n)     //这是最后一次merge才会进入这个循环，
+	if ((i + s - 1) < n)      //这是最后一次merge才会进入这个循环，也就是i=1下来的
 	{
-		cout << " i+s-1: " << i + s - 1 << endl;
 		Merge(initlist, result, i, i + s - 1, n);
 	}
 	else
+	{
+		cout << "i---  " << i << endl;
 		copy(initlist + i, initlist + n + 1, result + i);
+	}
+}
+
+
+template<class T>
+void MergeSort(T *initlist, int n)
+{
+	T *tempList = new T[n + 1];
+	for (int l = 1; l < n; l *= 2)
+	{
+		MergePass(initlist, tempList, n, l);	
+		/*copy(tempList, tempList + n + 1, initlist); */   //每次都拷贝一遍，可以重复利用
+		//一种更好的写法是下面这个，归并一次变换到原来的数组，而不是简单的拷贝，效率要高一些
+		l *= 2;
+		MergePass(tempList, initlist, n, l);
+	}
+	delete[]  tempList;
 }
 
 
