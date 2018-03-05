@@ -124,6 +124,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="InsertSort.h" />
     <ClInclude Include="MergeSort.h" />
     <ClInclude Include="RadixSort.h" />
   </ItemGroup>
