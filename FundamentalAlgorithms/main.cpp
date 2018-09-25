@@ -186,6 +186,7 @@ int Binary_Search5(vector<int> &v, int key)
 }
 
 
+
 int main()
 {
 	int s[] = { 1,2,3,4,3,5,4,5,6,7,86,5,4,3,3,2,4 };
@@ -195,6 +196,9 @@ int main()
 	cout << endl;
 	return 0;
 }
+
+
+
 
 
 int GetNumberOfK(vector<int> data, int k) {
