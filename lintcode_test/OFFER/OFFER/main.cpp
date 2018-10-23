@@ -81,34 +81,6 @@ int lcm(const int &l, const int &m)
 }
 
 
-#include<vector>  
-bool m[] = { false,true,false,true,false,true,false,true,true,false,true,false,true }; 
-vector<string> b= { "Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday" };   
-void weak(int year, int month, int day)
-{
-	//检查月份是否合法
-	if ((year <= 0 || month <= 0 || day <= 0) || (month == 2 && day > 29) || (!m[month] && day >= 31))     
-	{
-		printf("illegal\n");		    return;
-	}
-	//检查闰年是否合法
-	if (!((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) && month == 2 && day == 29)
-	{
-		printf("illegal\n");		    return;
-	}
-
-
-	if (month < 3)
-	{
-		year -= 1;
-		month += 12;
-	}
-	//计算从0001年1月1日到现在一共多少天，然后对七取余数
-	int c = int(year / 100), y = year - 100 * c;
-	int w = int(c / 4) - 2 * c + y + int(y / 4) + (26 * (month + 1) / 10) + day - 1;
-	w = (w % 7 + 7+1) % 7;
-	cout << b[w] << endl;
-}
 
 	
 int main()
